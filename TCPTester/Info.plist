@@ -49,5 +49,9 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleHelpBookName</key>
+	<string>com.example.MyApp.help</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>$(PROJECT_NAME)Help.help</string>
 </dict>
 </plist>

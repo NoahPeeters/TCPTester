@@ -75,7 +75,7 @@ class ViewController: NSViewController {
         messagesTableView.scrollRowToVisible(messages.count - 1)
     }
     
-    @IBAction func send(_ sender: NSButton) {
+    @IBAction func send(_ sender: Any) {
         let rawMessage = messageTextField.stringValue;
         
         let encoding = InputEncoding(rawValue: encodingPopUpButton.titleOfSelectedItem ?? "UTF-8") ?? .utf8
@@ -89,22 +89,59 @@ class ViewController: NSViewController {
         }
     }
     
-    @IBAction func rightClickDeleteRow(_ sender: NSMenuItem) {
-        let row = messagesTableView.clickedRow;
+    func remove(row: Int) {
         messages.remove(at: row)
         messagesTableView.beginUpdates()
         messagesTableView.removeRows(at: IndexSet(integer: row), withAnimation: NSTableViewAnimationOptions())
         messagesTableView.endUpdates()
     }
     
+    func copy(row: Int, withEncoding encoding: OutputEncoding) {
+        let rowData = messages[row]
+        let pasteBoard = NSPasteboard.general()
+        pasteBoard.clearContents()
+        pasteBoard.writeObjects([encoding.encode(data: rowData.message) as NSPasteboardWriting])
+    }
+    
+    func copyUTF8(ofRow row: Int) {
+        copy(row: row, withEncoding: OutputEncoding.utf8)
+    }
+    
+    func copyHex(ofRow row: Int) {
+        copy(row: row, withEncoding: OutputEncoding.hex)
+    }
+    
+    @IBAction func rightClickDeleteRow(_ sender: NSMenuItem) {
+        let row = messagesTableView.clickedRow
+        remove(row: row)
+    }
+    
     @IBAction func rightClickCopyUTF8(_ sender: NSMenuItem) {
+        let row = messagesTableView.clickedRow
+        copyUTF8(ofRow: row)
     }
     
     @IBAction func rightClickCopyHex(_ sender: NSMenuItem) {
+        let row = messagesTableView.clickedRow
+        copyHex(ofRow: row)
     }
     
+    @IBAction func menuDeleteRow(_ sender: NSMenuItem) {
+        let row = messagesTableView.selectedRow
+        remove(row: row)
+    }
     
+    @IBAction func menuCopyUTF8(_ sender: NSMenuItem) {
+        let row = messagesTableView.selectedRow
+        copyUTF8(ofRow: row)
+    }
     
+    @IBAction func menuCopyHex(_ sender: NSMenuItem) {
+        let row = messagesTableView.selectedRow
+        copyHex(ofRow: row)
+    }
+    
+
     func setSendingStatus(status: Bool) {
         // set sending ui elements
         messageTextField.isEnabled = status
@@ -155,6 +192,7 @@ extension ViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let rowData = messages[row]
+        var image: NSImage?
         var text = ""
         
         if tableColumn == tableView.tableColumns[0] {
@@ -165,6 +203,13 @@ extension ViewController: NSTableViewDelegate {
             text = formatter.string(from: date)
         } else if tableColumn == tableView.tableColumns[1] {
             text = String(rowData.fromServer ? "Incomming" : "Outgoing")
+            if rowData.fromServer {
+                text = "Incomming"
+                image = NSImage(named: "Down")
+            } else {
+                text = "Outgoing"
+                image = NSImage(named: "Up")
+            }
         } else if tableColumn == tableView.tableColumns[2] {
             text = String(rowData.message.count)
         } else if tableColumn == tableView.tableColumns[4] {
@@ -178,9 +223,12 @@ extension ViewController: NSTableViewDelegate {
             
             return popUpButton
         }
+        
+        
 
         if let cell = tableView.make(withIdentifier: tableColumn!.identifier, owner: nil) as? NSTableCellView {
             cell.textField?.stringValue = text
+            cell.imageView?.image = image
             return cell
         }
         return nil

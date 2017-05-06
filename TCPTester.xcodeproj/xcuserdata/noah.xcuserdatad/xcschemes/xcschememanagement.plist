@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>TCPTesterHelp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>4F3F3FDF1EBE750100BA2A36</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4FF197221EBC960900AE977F</key>
 		<dict>
 			<key>primary</key>
