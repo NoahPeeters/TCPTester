@@ -35,6 +35,7 @@ class Document: NSDocument {
         vc.hostTextField.stringValue = tcpTestData.host
         vc.portTextField.stringValue = tcpTestData.port
         vc.messages = tcpTestData.messages
+        vc.messagesTableView.reloadData()
     }
 
     override func data(ofType typeName: String) throws -> Data {

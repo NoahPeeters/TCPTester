@@ -947,6 +947,9 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="menu" destination="kYv-Iy-OHI" id="Pxm-RG-O7q"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <nil key="backgroundColor"/>
@@ -1049,14 +1052,38 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="connectButton" destination="znU-hI-HUc" id="AVH-4q-MZS"/>
                         <outlet property="encodingPopUpButton" destination="ADt-oM-YNS" id="aOp-Ue-AMq"/>
                         <outlet property="hostTextField" destination="kxQ-K3-iHJ" id="vyx-fE-nKd"/>
                         <outlet property="messageTextField" destination="rYg-YZ-psy" id="OdH-kd-tHD"/>
                         <outlet property="messagesTableView" destination="bLK-bZ-QHQ" id="j9p-Kz-eye"/>
                         <outlet property="portTextField" destination="15v-72-W7j" id="Zdb-8h-em3"/>
+                        <outlet property="sendButton" destination="8Ts-BX-PFe" id="A0x-be-m7z"/>
                     </connections>
                 </viewController>
                 <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="kYv-Iy-OHI">
+                    <items>
+                        <menuItem title="Delete" id="WRX-GP-CMG">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="rightClickDeleteRow:" target="5gI-5U-AMq" id="H6D-eg-Yrl"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Copy UTF-8" id="NSZ-Cv-9wR">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="rightClickCopyUTF8:" target="5gI-5U-AMq" id="rlw-j2-tJw"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Copy Hex" id="wu1-si-Dg5">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="rightClickCopyHex:" target="5gI-5U-AMq" id="8Ia-JS-SDS"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="261" y="811"/>
         </scene>

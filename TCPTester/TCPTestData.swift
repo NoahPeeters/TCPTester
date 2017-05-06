@@ -57,7 +57,7 @@ class TCPTestData {
     
     func getJsonData() throws -> Data {
         return try JSONSerialization.data(withJSONObject: getJsonObject(), options: JSONSerialization.WritingOptions())
-    }    
+    }
 }
 
 class TCPMessage {
