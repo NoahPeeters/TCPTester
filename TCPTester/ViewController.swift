@@ -63,10 +63,17 @@ class ViewController: NSViewController {
         }
     }
     
+    
+    /// Returns the current time
+    ///
+    /// - Returns: The current time as a Double
     func getCurrentTime() -> Double {
         return Date().timeIntervalSince1970
     }
     
+    /// Adds a message to the `messages` array and makes sure that `messagesTableView` shows it.
+    ///
+    /// - Parameter message: The Message
     func addMessage(message: TCPMessage) {
         messages.append(message)
         messagesTableView.beginUpdates()
@@ -74,7 +81,7 @@ class ViewController: NSViewController {
         messagesTableView.endUpdates()
         messagesTableView.scrollRowToVisible(messages.count - 1)
     }
-    
+
     @IBAction func send(_ sender: Any) {
         let rawMessage = messageTextField.stringValue;
         
@@ -89,6 +96,9 @@ class ViewController: NSViewController {
         }
     }
     
+    /// Removes a message at a specific row.
+    ///
+    /// - Parameter row: The index of the row. This is equal to the index of the message in the `messages` array.
     func remove(row: Int) {
         messages.remove(at: row)
         messagesTableView.beginUpdates()
@@ -96,6 +106,11 @@ class ViewController: NSViewController {
         messagesTableView.endUpdates()
     }
     
+    /// Copys the message of a row into the user's clipboard
+    ///
+    /// - Parameters:
+    ///   - row: The index of the row. This is equal to the index of the message in the `messages` array.
+    ///   - encoding: The encoding that will be used
     func copy(row: Int, withEncoding encoding: OutputEncoding) {
         let rowData = messages[row]
         let pasteBoard = NSPasteboard.general()
@@ -103,10 +118,18 @@ class ViewController: NSViewController {
         pasteBoard.writeObjects([encoding.encode(data: rowData.message) as NSPasteboardWriting])
     }
     
+    /// Copys the message of a row utf-8 encoded into the user's clipboard
+    ///
+    /// - Parameter row: The index of the row. This is equal to the index of the message in the `messages` array.
     func copyUTF8(ofRow row: Int) {
         copy(row: row, withEncoding: OutputEncoding.utf8)
     }
     
+    /// Copys the message of a row hex encoded into the user's clipboard
+    ///
+    /// Example output: `48 65 6c 6c 6f 20 57 6f 72 6c 64 21`
+    ///
+    /// - Parameter row: The index of the row. This is equal to the index of the message in the `messages` array.
     func copyHex(ofRow row: Int) {
         copy(row: row, withEncoding: OutputEncoding.hex)
     }

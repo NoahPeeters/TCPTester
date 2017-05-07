@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F6935981EBE98EC007946AE /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4F6935961EBE98EC007946AE /* LICENSE.txt */; };
+		4F6935991EBE98EC007946AE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4F6935971EBE98EC007946AE /* README.md */; };
 		4F76D5651EBE787A00B04B46 /* TCPTesterHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 4F3F3FE01EBE750100BA2A36 /* TCPTesterHelp.help */; };
 		4FBDA7311EBD3199006569B4 /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDA7301EBD3199006569B4 /* Encoding.swift */; };
 		4FF197271EBC960900AE977F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF197261EBC960900AE977F /* AppDelegate.swift */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		4F3F3FE01EBE750100BA2A36 /* TCPTesterHelp.help */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCPTesterHelp.help; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3F3FE21EBE750100BA2A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F6935961EBE98EC007946AE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		4F6935971EBE98EC007946AE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4F76D5211EBE75C300B04B46 /* _config.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _config.yml; sourceTree = "<group>"; };
 		4F76D5241EBE75C300B04B46 /* _English */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = _English; path = index.md; sourceTree = "<group>"; };
 		4F76D5261EBE75C300B04B46 /* _English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = _English; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 				4FF197391EBC960900AE977F /* TCPTesterTests */,
 				4F3F3FE11EBE750100BA2A36 /* TCPTesterHelp */,
 				4FF197241EBC960900AE977F /* Products */,
+				4F6935961EBE98EC007946AE /* LICENSE.txt */,
+				4F6935971EBE98EC007946AE /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -378,6 +384,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F6935981EBE98EC007946AE /* LICENSE.txt in Resources */,
 				4FF1972D1EBC960900AE977F /* Assets.xcassets in Resources */,
 				4FF197301EBC960900AE977F /* Main.storyboard in Resources */,
 				4F76D5651EBE787A00B04B46 /* TCPTesterHelp.help in Resources */,
@@ -421,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F6935991EBE98EC007946AE /* README.md in Sources */,
 				4FF197291EBC960900AE977F /* ViewController.swift in Sources */,
 				4FBDA7311EBD3199006569B4 /* Encoding.swift in Sources */,
 				4FF197461EBCA3F700AE977F /* TCPTestData.swift in Sources */,
